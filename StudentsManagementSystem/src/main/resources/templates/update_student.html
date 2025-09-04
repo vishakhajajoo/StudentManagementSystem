@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+        .navbar-custom {
+            background: linear-gradient(90deg, #00416a, #e4e5e6);
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff !important;
+            text-shadow: 1px 1px 2px #000000;
+        }
+        .nav-link {
+            color: #ffffff !important;
+        }
+        .nav-link:hover {
+            color: #ffc107 !important;
+        }
+        body {
+            background-color: #f4f8fb;
+        }
+        .form-heading {
+            font-size: 30px;
+            color: #00416a;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .card {
+            margin-top: 40px;
+            padding: 25px;
+            border: 2px solid #00416a;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        .btn-primary {
+            background-color: #00416a;
+            border: none;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        .btn-primary:hover {
+            background-color: #002d4d;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Student Management System</a>
+
+    <!-- Toggler/collapsible Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" th:href="@{/students}">Student Management</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <div class="text-center" style="font-size: 30px;">Update Student</div>
+            <div class="card-body"></div>
+            <form th:action="@{/students/update/{id}(id=${student.id})}" th:object="${student}" method="post">
+
+                <div class="form-group">
+                    <label>Student First Name</label>
+                    <input type="text" name="firstName" class="form-control" th:field="*{firstName}" placeholder="Enter Student FirstName">
+                </div>
+
+                <div class="form-group">
+                    <label>Student Last Name</label>
+                    <input type="text" name="lastName" class="form-control" th:field="*{lastName}" placeholder="Enter Student LastName">
+                </div>
+
+                <div class="form-group">
+                    <label>Student Email</label>
+                    <input type="text" name="email" class="form-control" th:field="*{email}" placeholder="Enter Student Email">
+                </div>
+
+                <div class="box-footer">
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
